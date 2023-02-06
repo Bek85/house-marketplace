@@ -1,10 +1,4 @@
-import {
-  getAuth,
-  updateProfile,
-  EmailAuthProvider,
-  reauthenticateWithCredential,
-  signInWithCredential,
-} from 'firebase/auth';
+import { getAuth, updateProfile } from 'firebase/auth';
 import { updateDoc, doc } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
