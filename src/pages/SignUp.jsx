@@ -9,6 +9,7 @@ import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg';
 import visibilityIcon from '../assets/svg/visibilityIcon.svg';
+import { toast } from 'react-toastify';
 
 export default function SignUn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -50,10 +51,11 @@ export default function SignUn() {
       formDataCopy.timestamp = serverTimestamp();
 
       await setDoc(doc(db, 'users', user.uid), formDataCopy);
+      toast.success(`${auth.currentUser.displayName} has been registered`);
 
       navigate('/');
     } catch (error) {
-      console.log(error);
+      toast.error(error.message);
     }
   };
 

@@ -4,6 +4,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg';
 import visibilityIcon from '../assets/svg/visibilityIcon.svg';
+import { toast } from 'react-toastify';
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -34,10 +35,11 @@ export default function SignIn() {
         password
       );
       if (userCredential.user) {
+        toast.success(`${userCredential.user.displayName} has signed in`);
         navigate('/');
       }
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.message);
     }
   };
 
