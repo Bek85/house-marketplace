@@ -10,6 +10,7 @@ import { db } from '../firebase.config';
 import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg';
 import visibilityIcon from '../assets/svg/visibilityIcon.svg';
 import { toast } from 'react-toastify';
+import OAuth from '../components/OAuth';
 
 export default function SignUn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -110,7 +111,7 @@ export default function SignUn() {
             </div>
           </form>
 
-          {/* Google OAuth  */}
+          <OAuth />
           <Link to='/sign-in' className='registerLink'>
             Already have an account? Sign In instead
           </Link>
